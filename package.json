@@ -1,0 +1,27 @@
+{
+  "name": "ramadany",
+  "version": "1.7.0",
+  "description": "Check adan times in Ramadan with your terminal.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "ramadan": "index.js"
+  },
+  "keywords": [
+    "Ramadan",
+    "iftar"
+  ],
+  "author": {
+    "name": "Youssef Hajjari",
+    "email": "youssefhajjari01@gmail.com",
+    "url": "https://twitter.com/YsfHajjari"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "cli-table3": "^0.6.0",
+    "meow": "^9.0.0"
+  }
+}
