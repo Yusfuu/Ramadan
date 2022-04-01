@@ -376,27 +376,30 @@ async function main() {
 }
 
 const help = async () => {
-  const clear = chalkAnimation.pulse(
-    'npx ramadany (Show current time of iftar and adan) \n' +
-      'npx ramadany --iftar (Show iftar time) \n' +
-      'npx ramadany --all (Show all time of iftar and adan)'
+  console.log(gradient('red', 'green', 'blue')('made with 💖 by someone'));
+  const clear = chalkAnimation.rainbow(
+    '\n\n-> npx ramadany (Show current time of iftar and adan) \n\n' +
+      '-> npx ramadany --iftar (Show iftar time) \n\n' +
+      '-> npx ramadany --all (Show all time of iftar and adan)  \n\n \n\n'
   );
   await sleep();
   clear.stop();
 };
 
-if (flags.iftar) {
-  main();
-  process.exit(0);
-}
-if (flags.help) {
-  help();
-  process.exit(0);
-}
+help();
 
-if (flags.all) {
-  allAdans();
-  process.exit(0);
-}
+// if (flags.iftar) {
+//   main();
+//   process.exit(0);
+// }
+// if (flags.help) {
+//   help();
+//   process.exit(0);
+// }
 
-currentAdan();
+// if (flags.all) {
+//   allAdans();
+//   process.exit(0);
+// }
+
+// currentAdan();
