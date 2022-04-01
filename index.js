@@ -302,7 +302,7 @@ const { flags } = meow({
   flags: {
     all: { type: 'boolean', alias: 'a' },
     iftar: { type: 'boolean', alias: 'i' },
-    help: { type: 'boolean', alias: 'h' },
+    helpme: { type: 'boolean', alias: 'h' },
   },
 });
 
@@ -369,35 +369,29 @@ async function main() {
   console.clear();
   figlet(`Ramadany`, async (err, data) => {
     console.log(gradient.pastel.multiline(data) + '\n');
-    const clear = chalkAnimation.rainbow(`left: ${maghrib}`);
-    await sleep();
-    clear.stop();
+    chalkAnimation.rainbow(`left: ${maghrib}`);
   });
 }
 
 const help = async () => {
-  console.log(gradient('red', 'green', 'blue')('made with 💖 by someone'));
-  const clear = chalkAnimation.rainbow(
+  console.log(gradient('red', 'green')('made with 💖 by someone'));
+  chalkAnimation.rainbow(
     '\n\n-> npx ramadany (Show current time of iftar and adan) \n\n' +
       '-> npx ramadany --iftar (Show iftar time) \n\n' +
       '-> npx ramadany --all (Show all time of iftar and adan)  \n\n \n\n'
   );
-  await sleep();
-  clear.stop();
 };
 
 if (flags.iftar) {
   main();
-  process.exit(0);
+} else {
+  if (flags.helpme) {
+    help();
+  } else {
+    if (flags.all) {
+      allAdans();
+    } else {
+      currentAdan();
+    }
+  }
 }
-if (flags.help) {
-  help();
-  process.exit(0);
-}
-
-if (flags.all) {
-  allAdans();
-  process.exit(0);
-}
-
-currentAdan();
