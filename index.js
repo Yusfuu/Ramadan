@@ -312,6 +312,7 @@ const { flags } = meow({
   flags: {
     all: { type: 'boolean', alias: 'a' },
     iftar: { type: 'boolean', alias: 'i' },
+    help: { type: 'boolean', alias: 'h' },
   },
 });
 
@@ -357,7 +358,7 @@ const allAdans = () => {
   for (const key of data) {
     const fields = Object.values(key).splice(2);
     const row = {
-      [adans.id]: fields,
+      [key.id]: fields,
     };
     table.push(row);
   }
@@ -384,8 +385,30 @@ async function main() {
   });
 }
 
-if (flags.iftar) {
+const help = async () => {
+  const clear = chalkAnimation.pulse(
+    'npx ramadany (Show current time of iftar and adan) \n' +
+      'npx ramadany --iftar (Show iftar time) \n' +
+      'npx ramadany --all (Show all time of iftar and adan)'
+  );
+  await sleep();
+  clear.stop();
+};
+
+help();
+
+if (flag.iftar) {
   main();
-} else {
-  flags.all ? allAdans() : currentAdan();
+  process.exit(0);
 }
+if (flags.help) {
+  help();
+  process.exit(0);
+}
+
+if (flag.all) {
+  allAdans();
+  process.exit(0);
+}
+
+currentAdan();
