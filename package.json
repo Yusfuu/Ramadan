@@ -1,6 +1,6 @@
 {
   "name": "ramadany",
-  "version": "1.7.1",
+  "version": "1.7.3",
   "description": "Check adan times in Ramadan with your terminal.",
   "main": "index.js",
   "type": "module",
