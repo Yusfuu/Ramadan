@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-
 import Table from 'cli-table3';
 import meow from 'meow';
 import chalkAnimation from 'chalk-animation';
@@ -13,12 +12,6 @@ const { flags } = meow({
     fotor: { type: 'boolean', alias: 'f' },
   },
 });
-
-const c = {
-  magenta: '\x1B[95m$\x1B[39m',
-  green: '\x1B[32m$\x1B[39m',
-  cyan: '\x1B[36m$\x1B[39m',
-};
 
 const event = new Date();
 const sleep = (ms = 5000) => new Promise((r) => setTimeout(r, ms));
