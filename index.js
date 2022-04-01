@@ -13,7 +13,7 @@ const data = [
     Sunrise: '06:09',
     Dhuhr: '12:37',
     Asr: '16:14',
-    Maghrib: '19:06',
+    Maghrib: '18:57',
     Isha: '20:26',
   },
   {
@@ -311,7 +311,7 @@ const data = [
 const { flags } = meow({
   flags: {
     all: { type: 'boolean', alias: 'a' },
-    fotor: { type: 'boolean', alias: 'f' },
+    iftar: { type: 'boolean', alias: 'i' },
   },
 });
 
@@ -354,7 +354,7 @@ const table = new Table({
 
 // get all adans times
 const allAdans = () => {
-  for (const key of r) {
+  for (const key of data) {
     const fields = Object.values(key).splice(2);
     const row = {
       [adans.id]: fields,
@@ -378,13 +378,13 @@ async function main() {
   console.clear();
   figlet(`Ramadany`, async (err, data) => {
     console.log(gradient.pastel.multiline(data) + '\n');
-    const clear = chalkAnimation.rainbow(maghrib);
+    const clear = chalkAnimation.rainbow(`left: ${maghrib}`);
     await sleep();
     clear.stop();
   });
 }
 
-if (flags.fotor) {
+if (flags.iftar) {
   main();
 } else {
   flags.all ? allAdans() : currentAdan();
