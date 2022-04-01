@@ -386,20 +386,18 @@ const help = async () => {
   clear.stop();
 };
 
-help();
+if (flags.iftar) {
+  main();
+  process.exit(0);
+}
+if (flags.help) {
+  help();
+  process.exit(0);
+}
 
-// if (flags.iftar) {
-//   main();
-//   process.exit(0);
-// }
-// if (flags.help) {
-//   help();
-//   process.exit(0);
-// }
+if (flags.all) {
+  allAdans();
+  process.exit(0);
+}
 
-// if (flags.all) {
-//   allAdans();
-//   process.exit(0);
-// }
-
-// currentAdan();
+currentAdan();
